@@ -1,0 +1,87 @@
+.footer-container{
+    background-color: #fcfcfc;
+    height: auto;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    top: 180px;
+        width: 95%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin: 0 auto;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.about {
+    width: 30%;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+    /* border: solid black 2px; */
+}
+.aboutText{
+    text-wrap: wrap;
+
+}
+.contactUse{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+.call{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+    padding-top: 20px;
+}
+.call span{
+    text-wrap: wrap;
+    width: 20%;
+}
+.discover{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    gap: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+.discoverItems{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+@media screen and  (max-width: 728px) {
+    .footer-container{
+        height: auto;
+    }
+    .footer{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        height: auto;
+    }
+    .about{
+        height:auto;
+        width: 80%;
+    }
+    .contactUse{        
+        height: auto;
+        width: 80%;    }
+    .discover{
+        height: auto;
+        width: 80%;
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        bottom: 10px;
+    }
+    
+}

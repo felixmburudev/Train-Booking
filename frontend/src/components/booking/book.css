@@ -1,0 +1,217 @@
+.book{
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    gap: 20px;
+    position: absolute;
+    /* height: 100vh; */
+}
+/* .line{
+    background-color: black;
+    width: 100%;
+    height: 2px;
+} */
+.search{
+    display: flex;
+    flex-direction: column;
+    /* background-image: url("./header.svg"); */
+    background-color: #f9f9f9;
+    padding: 10px;    
+    gap: 20px;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+.icon-type{
+  font-size: 1.5rem;
+}
+.search h1{
+    font-size: 2rem;
+    color: rgb(108, 18, 164);
+    text-decoration: underline;
+    padding: 20px;
+    text-align: center;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); */
+    width: 70%;
+    
+}
+.mysearch{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1.4rem;
+    color: rgb(108, 18, 164);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    /* display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-spacing: 10px;
+    width: 80%;
+    color: rgb(108, 18, 164);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); */
+}
+td{    
+    /* border: 3px solid rgb(108, 18, 164); */
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 15px;
+}
+.modify{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgb(108, 18, 164);
+}
+  
+    .book-container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .book-container h2{
+        text-align: center;
+        color: rgb(108, 18, 164);
+        text-decoration: underline;
+    }
+    .booking{
+        display: flex;
+        justify-content: space-around;
+    }
+    .class{
+        display: flex;
+        width: 40%;
+        height: auto;
+        padding: 20px;
+        justify-content: space-between;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        color: rgb(108, 18, 164);
+    }
+    .firstClass{
+        height: 200px;
+        width: 48%;
+
+    }
+    .secondClass{
+        width: 48%;
+
+    }
+
+
+
+
+
+
+.price{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+
+.travelers {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    padding: 40px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .input-section {
+    display: flex;
+    color: rgb(108, 18, 164);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .input-group {
+    flex: 1;
+    text-align: left;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    font-weight: bold;
+    color: rgb(108, 18, 164);
+  }
+  
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(108, 18, 164);
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(108, 18, 164);
+  }
+  
+  .total-cost {
+    font-size: 1.4rem;
+    margin: 20px 0;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  @media screen and  (max-width: 500px){
+    .class{
+        height: auto;
+        width: 80%;
+    }
+    .booking{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        gap: 10px;
+    }
+    .travelers{
+        width: 80%;
+    }
+    .mysearch{
+        flex-direction: column;
+        height: 150px;
+    }
+    
+  }
+  

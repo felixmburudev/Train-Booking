@@ -1,0 +1,46 @@
+.turminus{
+    width: 100vw;
+    height: auto;
+    padding: 20px;
+    align-items: center;
+    position: relative;
+    top: 140px;
+        width: 95%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin: 0 auto;
+}
+h1{
+    text-align: center;
+    color: rgb(108, 18, 164);
+}
+.stations{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: rgb(108, 18, 164);
+}
+.station-card{
+    width: 40%;
+    height: auto;
+    padding: 10px;
+    align-items: center;
+
+}
+.station-card img{
+    width: 100%;
+    border-radius: 15px;
+}
+.station-card h2{
+    text-align: center;
+    color: rgb(108, 18, 164);
+}
+@media screen and (max-width: 500px) {
+    .stations{
+        flex-direction: column;
+    }
+    .station-card{
+        width: 80%;
+        height: auto;
+    }
+    
+}
