@@ -69,8 +69,8 @@ useEffect(() => {
     alert('Booking confirmed!');
     setModalOpen(true);
   }
-  if(numAdults + numChildren5to13 > tr.firstClass + tr.secondClass)
-  alert(tr.firstClass + tr.secondClass + " is more than the available seats")
+  if(numAdults + numChildren5to13 > tr.remaining_first_class + tr.remaining_second_class)
+  alert(tr.remaining_first_class + tr.remaining_second_class + " is more than the available seats")
     };
   const handleModalClose = () => {
     setModalOpen(false);
@@ -97,12 +97,12 @@ useEffect(() => {
             </div>
         </div>
         <div className="book-container">
-            <h2>{tr.name}</h2>
+            <h2>{"tr.train_name"}</h2>
             <div className="booking">
                 <div className="class">
                     <div className="firstClass">
                         <span className="class-title">
-                           <strong> First Class - {tr.firstClassTotal - tr.firstClass} Seats Available</strong>
+                           <strong> First Class - {tr.firstClassTotal - tr.remaining_first_class} Seats Available</strong>
                         </span>
                         <div className="price">
                             <FaPeopleCarry  className="icon-type"/>
@@ -130,9 +130,9 @@ useEffect(() => {
                  
                     <div className="secondClass">
                     <span className="class-title">
-                           <strong> Second Class - {tr.secondClassTotal - tr.secondClass} Seats Available</strong>
-                        </span>
-                        <div className="price">
+                           <strong> Second Class - {tr.secondClassTotal - tr.remaining_second_class} Seats Available</strong>
+                    </span>
+                    <div className="price">
                             <FaPeopleArrows className="icon-type"/>
                             <div className="item">
                                 Adults:

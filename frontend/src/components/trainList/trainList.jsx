@@ -18,13 +18,13 @@ const TrainList = ({ trains }) => {
     <div className="train-list">
       {trains.map((train, index) => (
         <div className="train-item" key={index}>
-          <h3>Train{train.name}</h3>
+          <h3>Train{train.train_name}</h3>
           <p><u>Departure Time:</u> {train.departureDate.split('T') [0]}</p>
           <p><u>From:</u> {train.fromCity}</p>
           <p><u>To:</u> {train.toCity}</p>          
-          <p><u>First Class Seats Booked:</u> {train.firstClass !== null ? train.firstClass : 0 }</p>
-          <p><u>Second class Seats Booked:</u> {train.secondClass !== null ? train.secondClass : 0}</p>
-          <p><u>Remaining Seats:</u> {train.totalcapacity -train.firstClass - train.secondClass}</p>
+          <p><u>First Class remaining seats:</u> {train.remaining_first_class !== null ? train.remaining_first_class : 0 }</p>
+          <p><u>Second class remaining seats:</u> {train.remaining_second_class !== null ? train.remaining_second_class : 0}</p>
+          <p><u>Remaining Seats:</u> {train.remaining_first_class + train.remaining_second_class}</p>
           <button onClick={ () => book(train.fromCity, train.toCity, train.departureDate)}> Book Now</button>
         </div>
       ))}

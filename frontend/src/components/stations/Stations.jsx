@@ -12,7 +12,7 @@ const getNextTrain = async () =>{
       setNextTrains(response.data.data);
   }
   catch(error){
-    console.log(nextTrains)
+    // console.log(nextTrains)
     setErrorTrain("Error Getting The Next Train Schedules ");
   }
 }

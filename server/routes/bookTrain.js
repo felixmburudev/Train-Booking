@@ -29,21 +29,21 @@ router.post("/book", (req, res) =>{
             res.status(500).json({ error: "Error Inserting "})
         }
         else{
-            console.log("data inserted ");
-            UpdateBookedTrains( passengers[0], noOfPassengersAdded);
+            console.log("a seat Booked");
+            UpdateBookedTrainSeats( passengers[0], noOfPassengersAdded);
             res.status(200).json({message: "Data inserted  successfully "});
         }
 
     });
 });
-function UpdateBookedTrains( passengers, noOfPassengersAdded ){
+function UpdateBookedTrainSeats( passengers, noOfPassengersAdded ){
     const trainName = `${passengers.departureTime}-${passengers.toCity}-Express`;
-    const classColumn = `${passengers.travelClass}Class`;
-    const sql = `UPDATE trainstable SET ${classColumn} = ? WHERE name = ? `;
+    const classColumn = `remaining_${passengers.travelClass}_class`;
+    const sql = `UPDATE trainstable SET ${classColumn} = ? WHERE train_name = ? `;
     const values = [noOfPassengersAdded, trainName];
-    db.query((sql), values , (errorIn, results)=>{
-        if(errorIn){ console.log("ERROR ADDING NO OF PASS "+ errorIn)}
-        else{console.log("NO OF PAS ADDED")}
+    db.query((sql), values , (errorIn)=>{
+        if(errorIn){ console.log("ERROR ADDING SEATS  "+ errorIn)}
+        else{console.log("SEATS ADDED")}
     })
 }
 

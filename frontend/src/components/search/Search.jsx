@@ -44,22 +44,23 @@ const Search = () => {
         setFrom('');
       }
     };
-    const handleSearchClick = async (e) => {
-      e.preventDefault(); 
-      // alert("SEARCH DATA ARE " + from + date.toString())
-      // searching trains here
-      const response = await axios(`http://localhost:3000/search?from=${from}&to=${to}&date=${date}`);
-     alert( "form server "+ response.data.status + " " +response.data.data[0].name + response.data.data[0].firstClass)
-     if(response.data.data[0].firstClass + response.data.data[0].secondClass >= response.data.data[0].totalcapacity){
-      alert("Fully BOOKED")
-     }
-     else{
-      const resp = JSON.stringify(response.data.data[0]);
-      navigate(`/book?fromStation=${from}&toStation=${to}&date=${date}&train=${encodeURIComponent(resp)}`);
-     }
-    //  alert('Searching trains from '+ from + ' to ' +  to + ' on ' + date);
+    const handleSearchClick = (e) => {
+      e.preventDefault();
+        try {
+            const response = axios(`http://localhost:3000/search?from=${from}&to=${to}&date=${date}`);
+            if(response.data[0].remaining_first_class + response.data[0].remaining_second_class === response.data[0].train_capacity){
+                alert("Fully BOOKED")
+            }
+            else{
+                const resp = JSON.stringify(response.data[0]);
+                alert(resp)
+                navigate(`/book?fromStation=${from}&toStation=${to}&date=${date}&train=${encodeURIComponent(resp)}`);
+            }
+        }catch (err){
+            alert("res errpr")
+            console.log("error while train searching ",err)
+        }
 
-              
     };
   return (
     <div>
