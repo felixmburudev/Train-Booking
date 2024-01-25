@@ -2,6 +2,7 @@ import "./bookModal.css"
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
+import * as response from "react-dom/test-utils";
 
 function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTime, travelClass }) {
   const initialPassenger =[{
@@ -34,8 +35,6 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
   };
 
   const handleSubmit = async () => {
-    // Send the 'passengers' 
-    // alert(passengers[0].name);
     try{
       const response = await axios.post('http://localhost:3000/book', {
         passengers: passengers,
@@ -43,14 +42,12 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
         headers: {
             'Content-Type': 'application/json'
       },}
-      );
-      alert("the api says " + response.data);
+      )
 
     }
     catch(error){
-      alert("The arrr " + error);
+      console.log( response.error);
     }
-    // ...
   };
 
   return (

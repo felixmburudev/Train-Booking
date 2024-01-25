@@ -9,7 +9,7 @@ router.post("/book", (req, res) =>{
     console.log("the length is "+noOfPassengersAdded);
     console.log(req.body);
 
-    const query = `INSERT INTO booking (name, email, ticketNo, phoneNo, fromCity, toCity, departureTime, travelClass, id) VALUES ?`;
+    const query = `INSERT INTO bookingtable (passanger_name, email, ticketNo, phoneNumber, fromCity, toCity, departureTime, travelClass, id) VALUES ?`;
     const values = passengers.map((passenger) =>[
         passenger.name,
         passenger.email,

@@ -6,22 +6,17 @@ import { useLocation} from "react-router-dom";
 import Footer from "../footer/Footer";
 import ReactModal from "react-modal";
 import BookModal from "./bookModal/bookModal";
-// import axios from "axios";
 
 
 
 const Book = () => {
 
-    // const[trainToBook, setTrainToBook] = useState();
     const [isModleOpen, setModalOpen ] = useState(false);
     const [numChildren5to13, setNumChildren5to13] = useState(0);
     const [numAdults, setNumAdults] = useState(0);
     const [classType, setClassType] = useState('first');
     const [totalCost, setTotalCost] = useState(0);
 
-//   const location = useLocation();
-//   // eslint-disable-next-line react/prop-types
-//   const{ bookingInfo} = props.location.state; 
 const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   
@@ -32,17 +27,10 @@ const train = queryParams.get('train');
 
 
     const tr = JSON.parse(decodeURIComponent(train));
-    // setTrainToBook();
-    // const trainToBook = tr;
-    // setTrainToBook(tr);
+    const trainToBook = tr[0]
 
 
 
-// const x = async ()=>{
-//     const response = await axios()
-// }
-
- 
 useEffect(() => {
     // Define prices per passenger for both 1st and 2nd class
     const adultPrice2nd = 1000; 
@@ -97,12 +85,12 @@ useEffect(() => {
             </div>
         </div>
         <div className="book-container">
-            <h2>{"tr.train_name"}</h2>
+            <h2>{trainToBook.train_name} name</h2>
             <div className="booking">
                 <div className="class">
                     <div className="firstClass">
                         <span className="class-title">
-                           <strong> First Class - {tr.firstClassTotal - tr.remaining_first_class} Seats Available</strong>
+                           <strong> First Class - {trainToBook.remaining_first_class} Seats Available</strong>
                         </span>
                         <div className="price">
                             <FaPeopleCarry  className="icon-type"/>
@@ -130,7 +118,7 @@ useEffect(() => {
                  
                     <div className="secondClass">
                     <span className="class-title">
-                           <strong> Second Class - {tr.secondClassTotal - tr.remaining_second_class} Seats Available</strong>
+                           <strong> Second Class - { trainToBook.remaining_second_class} Seats Available</strong>
                     </span>
                     <div className="price">
                             <FaPeopleArrows className="icon-type"/>

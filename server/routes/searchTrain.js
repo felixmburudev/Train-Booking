@@ -19,8 +19,8 @@ router.get("/search", (req, res) =>{
         }
         else {//results.length > 0
             console.log("Train Found With Success");
-            console.log(results[0]);
-            return  res.status(200).json( results)
+            console.log(JSON.stringify(results));
+            return  res.status(200).send( results)
         }
     })
 })

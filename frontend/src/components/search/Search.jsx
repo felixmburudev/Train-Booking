@@ -44,18 +44,20 @@ const Search = () => {
         setFrom('');
       }
     };
-    const handleSearchClick = (e) => {
+    const handleSearchClick =  async (e) => {
       e.preventDefault();
         try {
-            const response = axios(`http://localhost:3000/search?from=${from}&to=${to}&date=${date}`);
-            if(response.data[0].remaining_first_class + response.data[0].remaining_second_class === response.data[0].train_capacity){
+            const response =  await axios.get(`http://localhost:3000/search?from=${from}&to=${to}&date=${date}`);
+            if(response.data.remaining_first_class + response.data.remaining_second_class === response.data.train_capacity){
                 alert("Fully BOOKED")
             }
             else{
-                const resp = JSON.stringify(response.data[0]);
-                alert(resp)
+                const resp = JSON.stringify(response.data);
+                // alert(resp)
                 navigate(`/book?fromStation=${from}&toStation=${to}&date=${date}&train=${encodeURIComponent(resp)}`);
             }
+            // console.log(response)
+            // alert(JSON.stringify(response))
         }catch (err){
             alert("res errpr")
             console.log("error while train searching ",err)
