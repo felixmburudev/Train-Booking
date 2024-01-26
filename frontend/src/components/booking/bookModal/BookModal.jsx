@@ -12,12 +12,12 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
     departureTime : departureTime,
     ticketNo: "234243",
     name: '',
-    id: '',
+    passenger_id: '',
     email: '',
     phoneNumber: '',
   }];
 
-
+  const [error, setErrot] =useState("")
   const [passengers, setPassengers] = useState(Array(adultsCount + childrenCount).fill(initialPassenger));
 
   const handleInputChange = (e, index, field) => {
@@ -35,6 +35,12 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
   };
 
   const handleSubmit = async () => {
+    const isEmpty = checkIfPropertiesEmpty(passengers);
+
+    if (isEmpty) {
+      setErrot('Empty fields found');
+    }
+    else {
     try{
       const response = await axios.post('http://localhost:3000/book', {
         passengers: passengers,
@@ -46,9 +52,18 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
 
     }
     catch(error){
-      console.log( response.error);
+      console.log( response.error)
+    }
     }
   };
+  function checkIfPropertiesEmpty(train) {
+    for (let passenger of train) {
+        if (!passenger.passenger_id || !passenger.email  || !passenger.phoneNumber || !passenger.name) {
+          return true; //empty fields found
+        }
+    }
+    return false; //no empty fields found
+  }
 
   return (
     <div className="booking-modal">
@@ -67,9 +82,9 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
             <input
               type="text"
               placeholder={`Adult ${index + 1} ID`}
-              value={passenger.id || ''}
+              value={passenger.passenger_id || ''}
               className="modalFom"
-              onChange={(e) => handleInputChange(e, index, 'id')}
+              onChange={(e) => handleInputChange(e, index, 'passenger_id')}
             />
             <input
               type="text"
@@ -103,9 +118,9 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
             <input
               type="text"
               placeholder={`Child ${index + 1} Parent's ID`}
-              value={passenger.id || ''}
+              value={passenger.passenger_id || ''}
               className="modalFom"
-              onChange={(e) => handleInputChange(e, index + adultsCount, 'id')}
+              onChange={(e) => handleInputChange(e, index + adultsCount, 'passenger_id')}
             />
             <input
               type="text"
@@ -136,7 +151,7 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
           <p>{passenger.fromCity}</p>
           <p>{passenger.toCity}</p>
           <p>{passenger.phoneNumber}</p>
-          <p>{passenger.id}</p>
+          <p>{passenger.passenger_id}</p>
           <p>{passenger.ticketNo}</p>
           <p>{passenger.travelClass}</p>
           <p>{passenger.departureTime}</p>

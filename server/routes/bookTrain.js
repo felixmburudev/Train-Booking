@@ -9,8 +9,9 @@ router.post("/book", (req, res) =>{
     console.log("the length is "+noOfPassengersAdded);
     console.log(req.body);
 
-    const query = `INSERT INTO bookingtable (passanger_name, email, ticketNo, phoneNumber, fromCity, toCity, departureTime, travelClass, id) VALUES ?`;
+    const query = `INSERT INTO bookingtable (passenger_id ,passanger_name, email, ticketNo, phoneNumber, fromCity, toCity, departureTime, travelClass) VALUES ?`;
     const values = passengers.map((passenger) =>[
+        passenger.passenger_id,
         passenger.name,
         passenger.email,
         passenger.ticketNo,
@@ -19,14 +20,13 @@ router.post("/book", (req, res) =>{
         passenger.toCity,
         passenger.departureTime,
         passenger.travelClass,
-        passenger.id,
 
 
     ]);
     db.query(query, [values], (err, results) => {
         if(err){
             console.error("theheh error insertiong " + err);
-            res.status(500).json({ error: "Error Inserting "})
+            res.status(400).json({ error: "Error Inserting "})
         }
         else{
             console.log("a seat Booked");

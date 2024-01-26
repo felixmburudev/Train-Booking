@@ -7,10 +7,10 @@ const TrainList = ({ trains }) => {
   // const{from, to, departureTime} =trains;
   // alert("the details, "+ from + to+ departureTime)
   const navigate = useNavigate();
-  const book = (fromCity, toCity, departureDate) =>{
-    const departureTime = departureDate.split('T') [0];
-    // alert("the " + from + to + departureTime);
-    navigate(`/book?fromStation=${fromCity}&toStation=${toCity}&date=${departureTime}`);
+  const book = (train) =>{
+    const departureTime = train.departureDate.split('T') [0];
+    const trainData = JSON.stringify([train])
+    navigate(`/book?fromStation=${train.fromCity}&toStation=${train.toCity}&date=${departureTime}&train=${encodeURIComponent(trainData)}`);
 
   }
 
@@ -25,7 +25,7 @@ const TrainList = ({ trains }) => {
           <p><u>First Class remaining seats:</u> {train.remaining_first_class !== null ? train.remaining_first_class : 0 }</p>
           <p><u>Second class remaining seats:</u> {train.remaining_second_class !== null ? train.remaining_second_class : 0}</p>
           <p><u>Remaining Seats:</u> {train.remaining_first_class + train.remaining_second_class}</p>
-          <button onClick={ () => book(train.fromCity, train.toCity, train.departureDate)}> Book Now</button>
+          <button onClick={ () => book(train)}> Book Now</button>
         </div>
       ))}
     </div>

@@ -4,7 +4,7 @@ function createMysqlTables(){
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS bookingtable (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        passenger_id INT PRIMARY KEY,
         passanger_name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
         ticketNo VARCHAR(255) NOT NULL,
@@ -12,8 +12,7 @@ const createTableQuery = `
         fromCity VARCHAR(255) NOT NULL,
         toCity VARCHAR(255) NOT NULL,
         departureTime DATETIME NOT NULL,
-        travelClass VARCHAR(50) NOT NULL,
-        passenger_id INT
+        travelClass VARCHAR(50) NOT NULL
         );
 
     CREATE TABLE IF NOT EXISTS trainstable (
