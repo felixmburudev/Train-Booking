@@ -1,4 +1,4 @@
-import "./bookModal.css"
+import "../styles/bookModal.css"
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
@@ -52,7 +52,7 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
 
     }
     catch(error){
-      console.log( response.error)
+      alert( JSON.stringify(response.error));
     }
     }
   };

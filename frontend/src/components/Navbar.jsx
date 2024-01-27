@@ -1,5 +1,5 @@
 import { Link } from "react-scroll"
-import "./navbar.css"
+import "../styles/navbar.css"
 import {FaBars , FaSubway, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
 

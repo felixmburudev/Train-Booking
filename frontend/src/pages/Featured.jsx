@@ -1,4 +1,4 @@
-import "./featured.css"
+import "../styles/featured.css"
 import { FaDollarSign, FaBus, FaCheck, FaComments } from 'react-icons/fa';
 
 const Featured = () => {

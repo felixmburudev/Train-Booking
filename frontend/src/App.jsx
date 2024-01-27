@@ -1,6 +1,6 @@
-import Home from "./components/Home"
-import Book from "./components/booking/Book"
-import Navbar from "./components/navbar/Navbar"
+import Home from "./pages/Home"
+import Book from "./pages/Book"
+import Navbar from "./components/Navbar"
 import "./App.css";
 import { BrowserRouter, Route, Routes,  } from "react-router-dom"
 

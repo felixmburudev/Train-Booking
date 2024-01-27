@@ -1,4 +1,4 @@
-import "./turminus.css";
+import "../styles/turminus.css";
 
 const Turminus = () => {
   const stations = [

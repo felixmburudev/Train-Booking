@@ -1,6 +1,6 @@
 
-import Search from "../search/Search";
-import "./header.css";
+import Search from "./Search";
+import "../styles/header.css";
 
 
 

@@ -1,6 +1,6 @@
 import {  useEffect, useState } from "react";
-import TrainList from "../trainList/trainList";
-import "./stations.css";
+import TrainList from "../components/trainList";
+import "../styles/stations.css";
 import axios from "axios";
 
 const Stations = () => {

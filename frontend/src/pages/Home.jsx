@@ -1,10 +1,10 @@
 
-import Footer from './footer/Footer';
-import Header from './header/Header'
+import Footer from '../components/Footer';
+import Header from '../components/Header'
 // import Navbar from './navbar/Navbar';
-import Stations from "./stations/stations";
-import Turminus from './turminus/Turminus';
-import Featured from './whyUse/Featured';
+import Stations from "./stations";
+import Turminus from './Turminus';
+import Featured from './Featured';
 
 function Home () {
   return (

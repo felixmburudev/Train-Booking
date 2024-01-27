@@ -1,11 +1,11 @@
 import {  FaBaby, FaChild,  FaPeopleArrows, FaPeopleCarry } from "react-icons/fa";
-import Search from "../search/Search";
-import "./book.css";
+import Search from "../components/Search";
+import "../styles/book.css";
 import  { useState, useEffect } from 'react';
 import { useLocation} from "react-router-dom";
-import Footer from "../footer/Footer";
+import Footer from "../components/Footer";
 import ReactModal from "react-modal";
-import BookModal from "./bookModal/bookModal";
+import BookModal from "../components/BookModal";
 
 
 

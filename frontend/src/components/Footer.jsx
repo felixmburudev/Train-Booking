@@ -1,5 +1,5 @@
 import { FaArrowAltCircleRight, FaMailBulk, FaPhone } from "react-icons/fa"
-import  "./footer.css"
+import  "../styles/footer.css"
 const Footer = () => {
   return (
     <div className="footer-container">
