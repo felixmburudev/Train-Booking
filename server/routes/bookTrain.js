@@ -1,10 +1,9 @@
 const express = require('express')
 const  router = express.Router()
 const db = require("../config/db")
-
+const generateTicketNumber = require('../config/ticketGenerator')
 router.post("/book", (req, res) =>{
     const { passengers } = req.body;
-    // const passengerList = [...passengers, ]
     const noOfPassengersAdded = passengers.length;
 
     const query = `INSERT INTO bookingtable (passenger_id ,passanger_name, email, ticketNo, phoneNumber, fromCity, toCity, departureTime, travelClass) VALUES ?`;
@@ -12,7 +11,7 @@ router.post("/book", (req, res) =>{
         passenger.passenger_id,
         passenger.name,
         passenger.email,
-        passenger.ticketNo,
+        generateTicketNumber(),
         passenger.phoneNumber,
         passenger.fromCity,
         passenger.toCity,
