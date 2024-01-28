@@ -10,7 +10,6 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
     toCity: to,
     travelClass: travelClass,
     departureTime : departureTime,
-    ticketNo: "234243",
     name: '',
     passenger_id: '',
     email: '',
