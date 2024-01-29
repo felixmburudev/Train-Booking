@@ -15,8 +15,8 @@ const port = 3000
 
 // function to create tables
 createMysqlTables()
-cron.schedule('* * * * *', ()=> {
-  // trainScheduler()
+cron.schedule('*/1 * * * *', ()=> {
+  trainScheduler()
 });
 //insert a train
 app.get("/search", searchTrainRoute)

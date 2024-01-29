@@ -38,6 +38,13 @@ const createTableQuery = `
     CREATE TRIGGER IF NOT EXISTS  calculate_remaining_seats_before_update BEFORE UPDATE ON trainstable
          FOR EACH ROW
         SET NEW.remaining_seats =  NEW.remaining_first_class + NEW.remaining_second_class;
+
+
+    CREATE TRIGGER IF NOT EXISTS delete_old_trains
+        AFTER INSERT ON trainstable
+        FOR EACH ROW
+        
+          DELETE FROM trainstable WHERE departureDate < DATE_SUB(CURDATE(), INTERVAL 7 DAY);
 `;
 
 const queries = createTableQuery.split(';').filter(query => query.trim() !== '');
@@ -45,9 +52,9 @@ const queries = createTableQuery.split(';').filter(query => query.trim() !== '')
 for (const query of queries) {
     db.query(query, (error) => {
         if (error) {
-            console.error('Error creating tables:', error);
+            console.error('Error creating :', error);
         } else {
-            console.log('Tables created successfully');
+            console.log('created successfully');
         }
     });
 }

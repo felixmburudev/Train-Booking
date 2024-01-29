@@ -51,7 +51,7 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
 
     }
     catch(error){
-      alert( JSON.stringify(response.error));
+      console.log( error.response.error);
     }
     }
   };
