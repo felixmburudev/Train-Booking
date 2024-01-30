@@ -3,10 +3,10 @@ const mysql = require('mysql2')
 require("dotenv").config()
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'felo',
-    password: '1234',
-    database:'trainbooking'
+    host: process.DB_HOST,
+    user: process.DB_USER,
+    password: process.PASSWORD,
+    database: process.DB_NAME
 })
 db.connect((err) => {
     if (err) throw "ERR" + err;
