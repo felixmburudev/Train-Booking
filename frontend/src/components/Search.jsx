@@ -52,9 +52,9 @@ const Search = () => {
                 alert("Fully BOOKED")
             }
             else{
-                const resp = JSON.stringify(response.data);
+                const trainData = JSON.stringify(response.data);
                 // alert(resp)
-                navigate(`/book?fromStation=${from}&toStation=${to}&date=${date}&train=${encodeURIComponent(resp)}`);
+                navigate(`/book?fromStation=${from}&toStation=${to}&date=${date}&train=${encodeURIComponent(trainData)}`);
             }
             // console.log(response)
             // alert(JSON.stringify(response))

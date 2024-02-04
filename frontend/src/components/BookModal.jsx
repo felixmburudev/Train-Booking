@@ -2,8 +2,6 @@ import "../styles/bookModal.css"
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
-import * as response from "react-dom/test-utils";
-
 function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTime, travelClass }) {
   const initialPassenger =[{
     fromCity: from,

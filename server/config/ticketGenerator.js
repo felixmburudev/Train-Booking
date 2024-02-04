@@ -17,4 +17,5 @@ function generateTicketNumber() {
     return ticketNumber
 }
 
-module.exports = generateTicketNumber; 
+
+module.exports = generateTicketNumber()

@@ -6,6 +6,7 @@ const cors = require('cors');
 const createMysqlTables = require('./config/mysqlTableCreator');
 const cron = require("node-cron");
 const trainScheduler = require('./controller/trainScheduler')
+const delete_old_trains = require('./controller/deleteTrains')
 
 
 const app = express();
@@ -17,6 +18,7 @@ const port = 3000
 createMysqlTables()
 cron.schedule('*/1 * * * *', ()=> {
   trainScheduler()
+  delete_old_trains()
 });
 //insert a train
 app.get("/search", searchTrainRoute)
