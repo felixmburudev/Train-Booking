@@ -85,3 +85,27 @@
     }
     
 }
+
+.toast {
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 9999;
+  }
+  
+  .toast-content {
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
