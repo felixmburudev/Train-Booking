@@ -1,6 +1,7 @@
 const express = require('express')
 const  router = express.Router()
 const db = require("../config/db")
+const emailServices =require("../controller/email") 
 const generateTicketNumber = require('../config/ticketGenerator')
 router.post("/book", (req, res) =>{
     const { passengers } = req.body;
@@ -28,6 +29,7 @@ router.post("/book", (req, res) =>{
         else{
             console.log("a seat Booked");
             UpdateBookedTrainSeats( passengers[0], noOfPassengersAdded);
+            emailServices(passengers)
             res.status(200).json({message: "Data inserted  successfully "});
         }
 
