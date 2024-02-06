@@ -26,7 +26,6 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
       toCity: to,
       travelClass: travelClass,
       departureTime: departureTime,
-      ticketNo: 3223424,
     };
     setPassengers(updatedPassengers);
   };
