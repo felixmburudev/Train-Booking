@@ -7,8 +7,10 @@ function  emailService( passengers){
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
+        // user: process.env.EMAIL_USER,
+        // pass: process.env.EMAIL_PASSWORD,
+    user: 'brayokihuyo@gmail.com',
+    pass: 'oidogpotjxufulpn',
     },
 });
 passengers.map((passenger)=>{
@@ -22,7 +24,8 @@ db.query(query, [passenger.email, passenger.passenger_id], (err, result)=>{
         
 const email = passenger.email || result[0].email 
 const mailOptions = {
-    from: process.env.EMAIL_USER,
+    // from: process.env.EMAIL_USER,
+  from: 'brayokihuyo@gmail.com',
     to: email,
     subject: 'TICKET INFORMATION',
     text: `HELLO ${result.passenger_name}, thanks for traveling  with us.
