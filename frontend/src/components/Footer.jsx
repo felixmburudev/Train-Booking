@@ -18,31 +18,32 @@ const Footer = () => {
       <div className="footer">
         <div className="about">
                 <h2>About</h2>
-                <span className="aboutText">The Standard Gauge Railway (SGR) is a flagship project by the Government of Kenya as a transport component aimed at delivering Vision 2030 making Kenya a middle income country by 2030... more</span>
+                <span className="aboutText">Welcome to our train booking platform! We strive to provide convenient and efficient railway transportation services for our customers. Experience hassle-free booking and comfortable travel with us. Let's embark on a journey together!</span>
+
             </div>
             <div className="contactUse">
                 <div className="call">
                     <FaPhone/>
                     <div> 
-                        <span>073234234</span>
-                        <span> -  Madaraka Express Passenger Service inquiries, complaints, lost & found.</span>
+                    <span>123-456-7890</span>
+                    <span> -  General inquiries, complaints, lost & found.</span>
                     </div>
                     
                 </div>
                 <div className="call">
                     <FaPhone/>
                     <div> 
-                        <span>073234234</span>
-                        <span> -  Madaraka Express Passenger Service inquiries, complaints, lost & found.</span>
-                    </div>
+                    <span>987-654-3210</span>
+                    <span> -  Booking assistance and support.</span>
+                </div>
                     
                 </div>
                 <div className="call">
                     <FaPhone/>
                     <div> 
-                        <span>073234234</span>
-                        <span> -  Madaraka Express Passenger Service inquiries, complaints, lost & found.</span>
-                    </div>
+                    <span>555-555-5555</span>
+                    <span> -  Emergency hotline.</span>
+                </div>
                     
                 </div>
                 <div className="call">

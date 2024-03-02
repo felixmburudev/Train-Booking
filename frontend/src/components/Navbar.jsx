@@ -1,4 +1,3 @@
-import { Link } from "react-scroll"
 import "../styles/navbar.css"
 import {FaBars , FaSubway, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
@@ -19,33 +18,13 @@ import { useRef } from "react";
             <h3>T-Bookers</h3>
            </div>
             <nav ref={navRef}>
-                <Link to="Home"
-                activeClass="active"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={500} onClick={showNavbar}>Home</Link>
-                <Link 
-                activeClass="active"
-                to="About"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={ 500}onClick={showNavbar}>About</Link>
-                <Link 
-                activeClass="active"
-                to="Services"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={ 500} onClick={showNavbar}>Services</Link>
-                <Link 
-                activeClass="active"
-                to="Contact"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={700} onClick={showNavbar}>Contact Us</Link>
+                <a href="/" onClick={showNavbar}>Home</a>
+                <a 
+                onClick={showNavbar}>About</a>
+                <a 
+                 onClick={showNavbar}>Services</a>
+                <a 
+                onClick={showNavbar}>Contact Us</a>
                 <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes/>
                 </button>

@@ -1,4 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --mainColor: #1e92a4;
+    --mainColorLight:  #6170ab;
+    --secondaryColor: rgb(244, 87, 87);
+    --textColor: #eee;
+}
 body{
+
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     /* align-items: center;
     display: flex;

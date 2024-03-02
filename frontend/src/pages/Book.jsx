@@ -32,14 +32,15 @@ const train = queryParams.get('train');
 
 
 useEffect(() => {
-    // Define prices per passenger for both 1st and 2nd class
+    // Defining prices per passenger for both 1st and 2nd class
     const adultPrice2nd = 1000; 
     const childPrice2nd = 500;
   
     const adultPrice1st = 2000; 
     const childPrice1st = 1000; 
   
-    // Calculate the total cost based on the inputs and class type
+    // Calculate the total cost based on the inputs and class type wheree first class adult = 2000 children = 1000, 2nd class adult is 1000 children =500
+    
     const child5to13Cost = numChildren5to13 * (classType === 'first' ? childPrice1st : childPrice2nd);
     const adultCost = numAdults * (classType === 'first' ? adultPrice1st : adultPrice2nd);
   

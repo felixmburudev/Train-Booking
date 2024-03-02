@@ -15,7 +15,9 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
   }];
 
   const [error, setErrot] =useState("")
+  const [response, setResponse]= useState('')
   const [passengers, setPassengers] = useState(Array(adultsCount + childrenCount).fill(initialPassenger));
+  const [loading, setLoading] = useState(false)
 
   const handleInputChange = (e, index, field) => {
     const updatedPassengers = [...passengers];
@@ -31,6 +33,9 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
   };
 
   const handleSubmit = async () => {
+    setLoading(true)
+    setErrot('')
+    setResponse("")
     const isEmpty = checkIfPropertiesEmpty(passengers);
 
     if (isEmpty) {
@@ -38,19 +43,25 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
     }
     else {
     try{
-      const response = await axios.post('http://localhost:3000/book', {
+      const res = await axios.post('http://localhost:3000/book', {
         passengers: passengers,
       }, {
         headers: {
             'Content-Type': 'application/json'
       },}
       )
+      setResponse(res.data.message)
+      setPassengers(Array(adultsCount + childrenCount).fill(initialPassenger))
 
     }
-    catch(error){
+    catch(err){
+      setErrot(err.response.error)
       console.log( error.response.error);
     }
     }
+    setTimeout(()=>{
+      setLoading(false)
+    }, 4000)
   };
   function checkIfPropertiesEmpty(train) {
     for (let passenger of train) {
@@ -104,6 +115,7 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
         <div className="children">
         {passengers.slice(adultsCount).map((passenger, index) => (
           <div className="form-T"  key={index}>
+            <from>
             <input
               type="text"
               placeholder={`Child ${index + 1} Name`}
@@ -134,12 +146,17 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
                 handleInputChange(e, index + adultsCount, 'phoneNumber')
               }
             />
+            </from>
           </div>
         ))}</div>
       </div>
-      <button onClick={handleSubmit}>Submit</button>
-      <button onClick={onClose}>Close</button>
-      <div className="map">
+       <p> {response} </p>      
+       <p> {error} </p>
+      <button onClick={handleSubmit}  disabled={loading}>Submit</button>
+      <button onClick={onClose}  disabled={loading}>Close</button>
+      
+      {loading && <div>Loading...</div>}
+      {/* <div className="map">
         {passengers.map((passenger, index)=>
           <div key={index}>
           <p>{passenger.name}</p>
@@ -153,7 +170,7 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
           <p>{passenger.departureTime}</p>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

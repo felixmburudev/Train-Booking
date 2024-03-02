@@ -14,9 +14,9 @@ app.use(cors());
 app.use(express.json());
 const port = 3000
 
-// function to create tables
+
 createMysqlTables()
-cron.schedule('*/1 * * * *', ()=> {
+cron.schedule('0 9 * * *', ()=> {
   trainScheduler()
   delete_old_trains()
 });

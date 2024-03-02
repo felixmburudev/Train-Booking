@@ -7,10 +7,8 @@ function  emailService( passengers){
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        // user: process.env.EMAIL_USER,
-        // pass: process.env.EMAIL_PASSWORD,
-    user: 'brayokihuyo@gmail.com',
-    pass: 'oidogpotjxufulpn',
+        user: process.env.USER_EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
     },
 });
 passengers.map((passenger)=>{
@@ -23,13 +21,16 @@ db.query(query, [passenger.email, passenger.passenger_id], (err, result)=>{
 
         
 const email = passenger.email || result[0].email 
+console.log(passenger.email +  result[0].email + JSON.stringify( result)  )
 const mailOptions = {
-    // from: process.env.EMAIL_USER,
-  from: 'brayokihuyo@gmail.com',
+    from: process.env.USER_EMAIL,
     to: email,
     subject: 'TICKET INFORMATION',
-    text: `HELLO ${result.passenger_name}, thanks for traveling  with us.
-            your ticket number: ${result.ticketNo}. `,
+    text: `HELLO ${result[0].passenger_name}, your booking from ${result[0].fromCity} to ${result[0].toCity}
+        has been confirmed, travel class is ${result[0].travelClass} depature time is ${result[0].departureTime}.
+        your ticket number: ${result[0].ticketNo}.
+         Thanks for traveling  with us.
+            your ticket number: ${result[0].ticketNo}. `,
 };
 
 transporter.sendMail(mailOptions, (emailErr, info) => {
