@@ -2,7 +2,6 @@ const db = require("../config/db");
 
 function trainScheduler(){
 
- // Run every minute
     const trainCity1 = {
         train_name: '',
         departureDate: "",
@@ -17,13 +16,15 @@ function trainScheduler(){
         toCity: "city1",
     };
 
-    const date = new Date();
+    const date = new Date()
     date.setDate(date.getDate() + 7);
-    const trainDate = date.toISOString().split('T')[0];
+    const trainDate = new Date(date.toLocaleDateString().split('T')[0]);
+    console.log(typeof(trainDate))
     trainCity1.train_name = `${trainDate}-${trainCity1.toCity}-Express`;
     trainCity2.train_name = `${trainDate}-${trainCity2.toCity}-Express`;
     trainCity1.departureDate = trainDate;
     trainCity2.departureDate = trainDate;
+    console.log(trainCity1.departureDate)
 
     const sqlInsert = `INSERT INTO trainstable (train_name, fromCity, toCity, departureDate) VALUES ?`;
 
@@ -41,4 +42,4 @@ function trainScheduler(){
     });
 }
 
-module.exports = trainScheduler
+module.exports = trainScheduler()

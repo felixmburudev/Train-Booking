@@ -7,7 +7,7 @@ router.post("/book", (req, res) =>{
     const { passengers } = req.body;
     const noOfPassengersAdded = passengers.length;
 
-    const query = `INSERT INTO bookingtable (passenger_id ,passenger_name, email, ticketNo, phoneNumber, fromCity, toCity, departureTime, travelClass) VALUES ?`;
+    const query = `INSERT INTO bookingtable (passenger_id ,passenger_name, email, ticketNo, phoneNumber, fromCity, toCity, travelDate, travelClass) VALUES ?`;
     const values = passengers.map((passenger) =>[
         passenger.passenger_id,
         passenger.name,
@@ -29,9 +29,8 @@ router.post("/book", (req, res) =>{
         else{
             console.log("a seat Booked");
             UpdateBookedTrainSeats( passengers[0], noOfPassengersAdded);
-            emailServices(passengers)
-            console.log(JSON.stringify(passengers))
-            res.status(200).json({message: "Data inserted  successfully "});
+            // emailServices(passengers)
+            res.status(200).json({message: "BOOKING WAS SUCCESSIFULLY "});
         }
 
     });
@@ -39,11 +38,12 @@ router.post("/book", (req, res) =>{
 function UpdateBookedTrainSeats( passengers, noOfPassengersAdded ){
     const trainName = `${passengers.departureTime}-${passengers.toCity}-Express`;
     const classColumn = `remaining_${passengers.travelClass}_class`;
-    const sql = `UPDATE trainstable SET ${classColumn} = ? WHERE train_name = ? `;
+    // console.log(classColumn +trainName + " " + JSON.stringify(passengers))
+    const sql = `UPDATE trainstable SET ${classColumn} = ${classColumn} - ? WHERE train_name = ? `;
     const values = [noOfPassengersAdded, trainName];
-    db.query((sql), values , (errorIn)=>{
+    db.query((sql), values , (errorIn, results)=>{
         if(errorIn){ console.log("ERROR ADDING SEATS  "+ errorIn)}
-        else{console.log("SEATS ADDED")}
+        else{console.log(`SEATS ${noOfPassengersAdded}  BOOKED ${results.affectedRows}`)}
     })
 }
 

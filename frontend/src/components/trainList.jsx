@@ -8,7 +8,7 @@ const TrainList = ({ trains }) => {
   // alert("the details, "+ from + to+ departureTime)
   const navigate = useNavigate();
   const book = (train) =>{
-    const departureTime = train.departureDate.split('T') [0];
+    const departureTime =new Date(train.departureDate).toLocaleDateString()
     const trainData = JSON.stringify([train])
     navigate(`/book?fromStation=${train.fromCity}&toStation=${train.toCity}&date=${departureTime}&train=${encodeURIComponent(trainData)}`);
 

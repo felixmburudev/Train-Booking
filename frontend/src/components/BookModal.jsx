@@ -36,7 +36,7 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
     setLoading(true)
     setErrot('')
     setResponse("")
-    const isEmpty = checkIfPropertiesEmpty(passengers);
+    const isEmpty = checkIfPropertiesEmpty(passengers)
 
     if (isEmpty) {
       setErrot('Empty fields found');
@@ -58,10 +58,10 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
       setErrot(err.response.error)
       console.log( error.response.error);
     }
-    }
     setTimeout(()=>{
       setLoading(false)
     }, 4000)
+    }
   };
   function checkIfPropertiesEmpty(train) {
     for (let passenger of train) {

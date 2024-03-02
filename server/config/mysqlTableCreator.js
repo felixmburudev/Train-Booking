@@ -6,13 +6,13 @@ const createTableQuery = `
     CREATE TABLE IF NOT EXISTS bookingtable (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
         passenger_id INT,
-        passanger_name VARCHAR(255) NOT NULL,
+        passenger_name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
         ticketNo VARCHAR(255) NOT NULL,
         phoneNumber VARCHAR(15) NOT NULL,
         fromCity VARCHAR(255) NOT NULL,
         toCity VARCHAR(255) NOT NULL,
-        departureTime DATETIME NOT NULL,
+        travelDate DATE NOT NULL,
         travelClass VARCHAR(50) NOT NULL
         );
 
@@ -25,7 +25,7 @@ const createTableQuery = `
         remaining_first_class INT DEFAULT 5,
         remaining_second_class INT DEFAULT 10,
         train_capacity INT DEFAULT 15,
-        remaining_seats INT,
+        remaining_seats INT, 
         firstClassTotal INT DEFAULT 5,
         secondClassTotal INT DEFAULT 10
         
