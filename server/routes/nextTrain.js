@@ -9,11 +9,16 @@ router.get('/nextTrain',(req, res)=>{
             console.log("error executing sql query next train " + err);
         }
         else{
-            const trains = results;
-            trains.forEach(train => {
-              train.departureDate = new Date(train.departureDate).toLocaleDateString();
-            });
-            res.status(200).json({status: "Success", data: trains});
+            if(results.length > 0){
+                const trains = results;
+                trains.forEach(train => {
+                  train.departureDate = new Date(train.departureDate).toLocaleDateString();
+                });
+                res.status(200).json({status: "Success", data: trains});
+            }
+            else{
+                res.status(400).json({ status: "No Train Found" });
+            }
         }
     })
 })

@@ -16,14 +16,13 @@ function trainScheduler(){
         toCity: "city1",
     };
 
-    const date = new Date()
-    date.setDate(date.getDate() + 7);
-    const trainDate = new Date(date.toLocaleDateString().split('T')[0]);
-    console.log(typeof(trainDate))
+    const date = new Date();
+    date.setDate(date.getDate() +7)
+    const trainDate = date.toLocaleDateString().split('T')[0]
     trainCity1.train_name = `${trainDate}-${trainCity1.toCity}-Express`;
     trainCity2.train_name = `${trainDate}-${trainCity2.toCity}-Express`;
-    trainCity1.departureDate = trainDate;
-    trainCity2.departureDate = trainDate;
+    trainCity1.departureDate = date
+    trainCity2.departureDate = date
     console.log(trainCity1.departureDate)
 
     const sqlInsert = `INSERT INTO trainstable (train_name, fromCity, toCity, departureDate) VALUES ?`;
@@ -42,4 +41,4 @@ function trainScheduler(){
     });
 }
 
-module.exports = trainScheduler()
+module.exports = trainScheduler

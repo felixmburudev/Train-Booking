@@ -32,7 +32,7 @@ const train = queryParams.get('train');
 
 
 useEffect(() => {
-    // Defining prices per passenger for both 1st and 2nd class
+    // 1st and 2nd class costs are
     const adultPrice2nd = 1000; 
     const childPrice2nd = 500;
   
@@ -51,16 +51,20 @@ useEffect(() => {
   // ...
   
   const handleBookClick = () => {
-    if (totalCost === 0){ alert(' Please input varied values ')}
-    else{
-        
-    // Handle booking
-    alert('Booking confirmed!');
+   if(totalCost <= 0) {
+    return alert("Invalid input");
+    
+   }
+   if(classType === "first" && numAdults + numChildren5to13 > trainToBook.remaining_first_class) {
+    return alert(`only ${trainToBook.remaining_first_class} seats remaining in first class`)
+   }  
+   else if (classType==='second' && numAdults + numChildren5to13 > trainToBook.remaining_second_class){
+    return alert(`only ${trainToBook.remaining_first_class} seats remaining in second class`)
+   }   
+   else{
     setModalOpen(true);
-  }
-  if(numAdults + numChildren5to13 > tr.remaining_first_class + tr.remaining_second_class)
-  alert(tr.remaining_first_class + tr.remaining_second_class + " is more than the available seats")
-    };
+   }
+}
   const handleModalClose = () => {
     setModalOpen(false);
   };

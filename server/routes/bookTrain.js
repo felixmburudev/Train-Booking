@@ -6,7 +6,7 @@ const generateTicketNumber = require('../config/ticketGenerator')
 router.post("/book", (req, res) =>{
     const { passengers } = req.body;
     const noOfPassengersAdded = passengers.length;
-
+    console.log(JSON.stringify(passengers))
     const query = `INSERT INTO bookingtable (passenger_id ,passenger_name, email, ticketNo, phoneNumber, fromCity, toCity, travelDate, travelClass) VALUES ?`;
     const values = passengers.map((passenger) =>[
         passenger.passenger_id,
@@ -16,7 +16,7 @@ router.post("/book", (req, res) =>{
         passenger.phoneNumber,
         passenger.fromCity,
         passenger.toCity,
-        passenger.departureTime,
+        new Date(passenger.departureTime).toISOString().split("T")[0],
         passenger.travelClass,
 
 
@@ -29,7 +29,7 @@ router.post("/book", (req, res) =>{
         else{
             console.log("a seat Booked");
             UpdateBookedTrainSeats( passengers[0], noOfPassengersAdded);
-            // emailServices(passengers)
+            emailServices(passengers)
             res.status(200).json({message: "BOOKING WAS SUCCESSIFULLY "});
         }
 
