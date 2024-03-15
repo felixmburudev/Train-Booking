@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Stations from "./stations";
 import Turminus from './Turminus';
 import Featured from './Featured';
+import TestPage from '../data/Test';
 
 function Home () {
   return (
@@ -14,6 +15,7 @@ function Home () {
     <Stations/>
     <Featured/>
     <Turminus/>
+    {/* <TestPage trainName={"3/10/2024-city2-Express"}/> */}
     <Footer/>
 
     </div>

@@ -170,7 +170,7 @@ useEffect(() => {
                     <input
                         type="number"
                         value={numChildren5to13}
-                        onChange={(e) => {
+                        onChange={(e) =>{
                         const value = parseInt(e.target.value);
                         setNumChildren5to13(value >= 0 && value < 5 ? value : 0); // Ensure the value is not negative
                         }}
@@ -205,6 +205,7 @@ useEffect(() => {
         contentLabel="Booking Form">
             <BookModal
             // isOpen={isModleOpen}
+            trainName ={trainToBook.train_name}
             onClose={handleModalClose}
             adultsCount ={numAdults}
             childrenCount={numChildren5to13}

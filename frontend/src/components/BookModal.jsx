@@ -1,8 +1,10 @@
 import "../styles/bookModal.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
-function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTime, travelClass }) {
+import getTrainRemainingSeats from "../data/getTrainRemainingSeats"
+
+function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, departureTime, travelClass }) {
   const initialPassenger =[{
     fromCity: from,
     toCity: to,
@@ -18,6 +20,25 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
   const [response, setResponse]= useState('')
   const [passengers, setPassengers] = useState(Array(adultsCount + childrenCount).fill(initialPassenger));
   const [loading, setLoading] = useState(false)
+  const [remainingSeats, setRemainingSeats] = useState(null);
+
+  useEffect(() => {
+ fetchRemainingSeats();
+
+    return () => {
+    };
+  }, []);
+
+    const fetchRemainingSeats = async () => {
+      try {
+        const seatsData = await getTrainRemainingSeats(trainName);
+        setRemainingSeats(seatsData);
+        setLoading(false)
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
 
   const handleInputChange = (e, index, field) => {
     const updatedPassengers = [...passengers];
@@ -35,13 +56,19 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
   const handleSubmit = async () => {
     setLoading(true)
     setErrot('')
-    setResponse("")
+    setResponse("")    
+    fetchRemainingSeats();
     const isEmpty = checkIfPropertiesEmpty(passengers)
 
     if (isEmpty) {
       setErrot('Empty fields found');
     }
     else {
+      // alert(travelClass === 'first' && adultsCount+childrenCount > remainingSeats.remaining_first_class || travelClass==="second" && adultsCount+childrenCount> remainingSeats.remaining_second_class )
+      if(travelClass === 'first' && adultsCount+childrenCount > remainingSeats.remaining_first_class || travelClass==="second" && adultsCount+childrenCount> remainingSeats.remaining_second_class ){
+        setErrot('Not enough seats available Now');
+      }
+      else{
     try{
       const res = await axios.post('http://localhost:3000/book', {
         passengers: passengers,
@@ -50,14 +77,18 @@ function BookModal({ onClose, adultsCount, childrenCount, from, to, departureTim
             'Content-Type': 'application/json'
       },}
       )
+      setTimeout(()=>{
       setResponse(res.data.message)
       setPassengers(Array(adultsCount + childrenCount).fill(initialPassenger))
 
+      }, 4000)
     }
     catch(err){
       setErrot(err.response.error)
       console.log( error.response.error);
     }
+
+      }
     setTimeout(()=>{
       setLoading(false)
     }, 4000)
@@ -179,6 +210,8 @@ export default BookModal;
 
 
 BookModal.propTypes = {
+  
+  trainName: PropTypes.string.isRequired,
   childrenCount: PropTypes.number.isRequired,
   onClose: PropTypes.func.isRequired,
   adultsCount: PropTypes.number.isRequired,
