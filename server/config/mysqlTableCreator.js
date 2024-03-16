@@ -31,15 +31,7 @@ const createTableQuery = `
         
         );
 
-    CREATE TRIGGER IF NOT EXISTS calculate_remaining_seats_before_insert BEFORE INSERT  ON trainstable
-        FOR EACH ROW
-        SET NEW.remaining_seats =  NEW.remaining_first_class + NEW.remaining_second_class;
-
-    CREATE TRIGGER IF NOT EXISTS  calculate_remaining_seats_before_update BEFORE UPDATE ON trainstable
-         FOR EACH ROW
-        SET NEW.remaining_seats =  NEW.remaining_first_class + NEW.remaining_second_class;
-        
-
+   
 
 `;
 
@@ -56,6 +48,9 @@ for (const query of queries) {
 }
 }
 module.exports = createMysqlTables
+
+
+
 
 
 

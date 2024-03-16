@@ -5,8 +5,9 @@ const emailServices =require("../controller/email")
 const generateTicketNumber = require('../config/ticketGenerator')
 router.post("/book", (req, res) =>{
     const { passengers } = req.body;
-    const travelDate = new Date(passengers[0].departureTime);    const currentDate = new Date();
-console.log(currentDate + "  => " +travelDate)
+    const travelDate = new Date(passengers[0].departureTime);
+    const currentDate = new Date();
+// console.log(currentDate + "  => " +travelDate)
     // check if the booking is open
     if (travelDate <= currentDate) {       
         console.log("Travel date has passed.");    
@@ -46,9 +47,11 @@ console.log(currentDate + "  => " +travelDate)
     });
 });
 function UpdateBookedTrainSeats( passengers, noOfPassengersAdded ){
-    const trainName = `${passengers.departureTime}-${passengers.toCity}-Express`;
+    const departureDate = new Date(passengers.departureTime).toLocaleDateString();
+    // console.log(departureDate)
+    const trainName = `${departureDate}-${passengers.toCity}-Express`;
     const classColumn = `remaining_${passengers.travelClass}_class`;
-    // console.log(classColumn +trainName + " " + JSON.stringify(passengers))
+    console.log(classColumn +trainName + " " + JSON.stringify(passengers))
     const sql = `UPDATE trainstable SET ${classColumn} = ${classColumn} - ? WHERE train_name = ? `;
     const values = [noOfPassengersAdded, trainName];
     db.query((sql), values , (errorIn, results)=>{

@@ -6,6 +6,7 @@ import { useLocation} from "react-router-dom";
 import Footer from "../components/Footer";
 import ReactModal from "react-modal";
 import BookModal from "../components/BookModal";
+import getTrainRemainingSeats from "../data/getTrainRemainingSeats"
 
 
 
@@ -28,9 +29,21 @@ const train = queryParams.get('train');
 
     const tr = JSON.parse(decodeURIComponent(train));
     const trainToBook = tr[0]
+    const[remainingSeats, setRemainingSeats] = useState(trainToBook.train_name)
 
 
+    const fetchRemainingSeats = async () => {
+        try {
+          const seatsData = await getTrainRemainingSeats(trainToBook.train_name);
+          setRemainingSeats(seatsData);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
 
+useEffect(()=>{    
+    fetchRemainingSeats()
+},[isModleOpen])
 useEffect(() => {
     // 1st and 2nd class costs are
     const adultPrice2nd = 1000; 
@@ -95,7 +108,7 @@ useEffect(() => {
                 <div className="class">
                     <div className="firstClass">
                         <span className="class-title">
-                           <strong> First Class - {trainToBook.remaining_first_class} Seats Available</strong>
+                           <strong> First Class - {remainingSeats.remaining_first_class} Seats Available</strong>
                         </span>
                         <div className="price">
                             <FaPeopleCarry  className="icon-type"/>
@@ -123,7 +136,7 @@ useEffect(() => {
                  
                     <div className="secondClass">
                     <span className="class-title">
-                           <strong> Second Class - { trainToBook.remaining_second_class} Seats Available</strong>
+                           <strong> Second Class - { remainingSeats.remaining_second_class} Seats Available</strong>
                     </span>
                     <div className="price">
                             <FaPeopleArrows className="icon-type"/>

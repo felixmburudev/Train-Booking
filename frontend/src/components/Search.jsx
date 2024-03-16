@@ -25,7 +25,7 @@ const Search = () => {
     const navigate =useNavigate();
     const maxDate = new Date();
     const minDate = new Date().toISOString().split('T')[0];
-    maxDate.setDate(maxDate.getDate() + 7);
+    maxDate.setDate(maxDate.getDate() + 8);
     const maxDateFinal = maxDate.toISOString().split('T') [0];
     
     const handleFromChange = (e) => {

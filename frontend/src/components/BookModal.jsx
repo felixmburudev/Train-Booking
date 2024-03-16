@@ -33,7 +33,6 @@ function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, de
       try {
         const seatsData = await getTrainRemainingSeats(trainName);
         setRemainingSeats(seatsData);
-        setLoading(false)
       } catch (error) {
         console.log(error.message);
       }
@@ -52,7 +51,7 @@ function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, de
     };
     setPassengers(updatedPassengers);
   };
-
+// alert(loading)
   const handleSubmit = async () => {
     setLoading(true)
     setErrot('')
@@ -78,9 +77,12 @@ function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, de
       },}
       )
       setTimeout(()=>{
-      setResponse(res.data.message)
+      setResponse(res.data.message )
       setPassengers(Array(adultsCount + childrenCount).fill(initialPassenger))
-
+        setTimeout(()=>{
+          onClose()
+          setLoading(false)
+        }, 1000)
       }, 4000)
     }
     catch(error){
@@ -88,10 +90,10 @@ function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, de
       console.log( error.response.data.error);
     }
 
-      }
     setTimeout(()=>{
       setLoading(false)
     }, 4000)
+      }
     }
   };
   function checkIfPropertiesEmpty(train) {
@@ -181,6 +183,7 @@ function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, de
           </div>
         ))}</div>
       </div>
+      {loading && <div>Loading...</div>}
        <p> {response} </p>      
        <p> {error} </p>
       <button onClick={handleSubmit}  disabled={loading}>Submit</button>
