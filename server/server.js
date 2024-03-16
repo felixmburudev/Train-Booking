@@ -9,12 +9,13 @@ const cron = require("node-cron");
 const getTrainSeats =require('./routes/getTrainSeats')
 const trainScheduler = require('./controller/trainScheduler')
 const delete_old_trains = require('./controller/deleteTrains')
+const deleteOldTickets = require('./controller/deleteOldTickets')
 // const liveTrain = require('./controller/liveTrain')
 const ticketsCancle = require('./routes/ticketCancle') 
 
 const app = express()
 app.use(cors());
-app.use(express.json());
+app.use(express.json())
 const port = 3000
 
 
@@ -22,6 +23,9 @@ createMysqlTables()
 cron.schedule('0 9 * * *', ()=> {
   trainScheduler()
   delete_old_trains()
+  setTimeout(()=>{    
+  deleteOldTickets()
+  }, 60000)
 });
 //insert a train
 app.get("/search", searchTrainRoute)

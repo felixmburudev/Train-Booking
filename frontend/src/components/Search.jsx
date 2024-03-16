@@ -30,6 +30,7 @@ const Search = () => {
     
     const handleFromChange = (e) => {
       const selectedFrom = e.target.value;
+      setMessage(null)
       setFrom(selectedFrom);
   
       if (selectedFrom === to) {
@@ -60,7 +61,13 @@ const Search = () => {
             // console.log(response)
             // alert(JSON.stringify(response))
         }catch (err){
+          if(message == null){
+            setMessage(err.message);
+          } else{
+            
           setMessage(err.response.data.error);
+          
+          }
             console.log("error while train searching ",err)
         }
 

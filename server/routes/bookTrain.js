@@ -39,7 +39,7 @@ console.log(currentDate + "  => " +travelDate)
         else{
             console.log("a seat Booked");
             UpdateBookedTrainSeats( passengers[0], noOfPassengersAdded);
-            // emailServices(passengers)
+            emailServices(passengers)
             res.status(200).json({message: "BOOKING WAS SUCCESSIFULLY "});
         }
 

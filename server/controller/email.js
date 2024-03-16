@@ -25,12 +25,11 @@ const mailOptions = {
     from: process.env.USER_EMAIL,
     to: email,
     subject: 'TICKET INFORMATION',
-    _text: `HELLO ${result[0].passenger_name}, your booking from ${result[0].fromCity} to ${result[0].toCity}
-        has been confirmed, travel class is ${result[0].travelClass} depature time is ${result[0].departureTime}.
-        your ticket number: ${result[0].ticketNo}.
+    _text:   `HELLO ${result[0].passenger_name}, your booking from ${result[0].fromCity} to ${result[0].toCity}
+        has been confirmed, travel class is ${result[0].travelClass} depature time is ${result[0].travelDate}.
         your ticket number: ${result[0].ticketNo}.
         Thanks for traveling  with us.🤗🤗 `,
-    get text() {
+    get text() { 
         return this._text;
     },
     set text(value) {

@@ -6,7 +6,7 @@ const db = require("../config/db")
 router.get('/getSeats', function(req, res) {
 
     const trainName = req.query.trainName
-    console.log(trainName);
+    // console.log(trainName);
     const sql = "SELECT * FROM trainstable WHERE train_name =?"
     db.query((sql), [trainName], (error, results) => {
         if (error) {
@@ -18,7 +18,6 @@ router.get('/getSeats', function(req, res) {
             }
             else {//results.length > 0
                 console.log("Train Found With Success");
-                console.log(JSON.stringify(results));
                 const result ={
                     remaining_first_class: results[0].remaining_first_class,
                     remaining_second_class: results[0].remaining_second_class,
