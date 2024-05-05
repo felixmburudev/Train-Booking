@@ -18,4 +18,4 @@ function generateTicketNumber() {
 }
 
 
-module.exports = generateTicketNumber()
+module.exports = generateTicketNumber
