@@ -83,9 +83,9 @@ function BookModal({trainName, onClose, adultsCount, childrenCount, from, to, de
 
       }, 4000)
     }
-    catch(err){
-      setErrot(err.response.error)
-      console.log( error.response.error);
+    catch(error){
+      setErrot(error.response.data.error)
+      console.log( error.response.data.error);
     }
 
       }

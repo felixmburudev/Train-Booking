@@ -5,7 +5,7 @@ const getTrainRemainingSeats = async (trainName) => {
     const response = await axios.get(`http://localhost:3000/getSeats?trainName=${trainName}` );
 
     const  result  = response.data;
-    alert(JSON.stringify(result));
+    // alert(JSON.stringify(result));
 
     return {
       remaining_first_class: result.remaining_first_class,

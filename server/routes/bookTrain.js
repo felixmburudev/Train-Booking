@@ -5,8 +5,18 @@ const emailServices =require("../controller/email")
 const generateTicketNumber = require('../config/ticketGenerator')
 router.post("/book", (req, res) =>{
     const { passengers } = req.body;
+    const travelDate = new Date(passengers[0].departureTime);    const currentDate = new Date();
+console.log(currentDate + "  => " +travelDate)
+    // check if the booking is open
+    if (travelDate <= currentDate) {       
+        console.log("Travel date has passed.");    
+         return res.status(400).json({ error: "Booking is Closed." });
+
+    } else {
+        console.log("Travel date is in the future.")
+    }
     const noOfPassengersAdded = passengers.length;
-    console.log(JSON.stringify(passengers))
+    // console.log(JSON.stringify(passengers))
     const query = `INSERT INTO bookingtable (passenger_id ,passenger_name, email, ticketNo, phoneNumber, fromCity, toCity, travelDate, travelClass) VALUES ?`;
     const values = passengers.map((passenger) =>[
         passenger.passenger_id,
@@ -29,7 +39,7 @@ router.post("/book", (req, res) =>{
         else{
             console.log("a seat Booked");
             UpdateBookedTrainSeats( passengers[0], noOfPassengersAdded);
-            emailServices(passengers)
+            // emailServices(passengers)
             res.status(200).json({message: "BOOKING WAS SUCCESSIFULLY "});
         }
 

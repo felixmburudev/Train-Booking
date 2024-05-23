@@ -11,7 +11,7 @@ const trainScheduler = require('./controller/trainScheduler')
 const delete_old_trains = require('./controller/deleteTrains')
 // const liveTrain = require('./controller/liveTrain')
 
-const app = express();
+const app = express()
 app.use(cors());
 app.use(express.json());
 const port = 3000

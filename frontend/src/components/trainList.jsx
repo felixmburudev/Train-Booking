@@ -18,7 +18,7 @@ const TrainList = ({ trains }) => {
     <div className="train-list">
       {trains.map((train, index) => (
         <div className="train-item" key={index}>
-          <h3>Train{train.train_name}</h3>
+          <h3>{train.train_name}</h3>
           <p><u>Departure Time:</u> {train.departureDate.split('T') [0]}</p>
           <p><u>From:</u> {train.fromCity}</p>
           <p><u>To:</u> {train.toCity}</p>          
