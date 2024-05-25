@@ -3,14 +3,14 @@ import "../styles/turminus.css";
 const Turminus = () => {
   const stations = [
     {
-      name: 'Station A',
+      name: 'Nairobi Station',
       image: '/img/turminus1.jpg',
-      description: 'Station A is a major railway station known for its historical significance and modern amenities.',
+      description: 'Nairobi Station  is a major railway station known for its historical significance and modern amenities.',
     },
     {
-      name: 'Station B',
+      name: 'Mombasa Station',
       image: '/img/turminus2.jpg', 
-      description: 'Station B is a bustling railway hub in the heart of the city, connecting travelers to various destinations.',
+      description: 'Mombasa Station is a bustling railway hub in the heart of the city, connecting travelers to various destinations.',
     },
   ];
 

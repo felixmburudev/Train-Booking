@@ -20,11 +20,15 @@ import { useRef } from "react";
             <nav ref={navRef}>
                 <a href="/" onClick={showNavbar}>Home</a>
                 <a 
+                href="#Aboout"
                 onClick={showNavbar}>About</a>
-                <a 
+                <a
+                href="#us"
                  onClick={showNavbar}>Services</a>
+                
                 <a 
-                onClick={showNavbar}>Contact Us</a>
+                href="/ticketCancling"
+                onClick={showNavbar}>Ticket Cancel</a>
                 <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes/>
                 </button>

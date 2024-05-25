@@ -1,0 +1,62 @@
+.ticket-canceling-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    padding-top: 80px; 
+    gap: 20px;
+  }
+  .message{
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .message p{
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #f32602;
+
+  }
+  .ticket-canceling-page h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .ticket-canceling-page form {
+    padding: 10px;
+    max-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+  }
+  
+  .ticket-canceling-page form div {
+    margin-bottom: 15px;
+  }
+  
+  .ticket-canceling-page label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .ticket-canceling-page input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .ticket-canceling-page button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ticket-canceling-page button:hover {
+    background-color: #0056b3;
+  }
+  
+ 

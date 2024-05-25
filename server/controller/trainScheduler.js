@@ -5,25 +5,26 @@ function trainScheduler(){
     const trainCity1 = {
         train_name: '',
         departureDate: "",
-        fromCity: "city1",
-        toCity: "city2",
+        fromCity: "Nairobi",
+        toCity: "Mombasa",
     };
 
     const trainCity2 = {
         train_name: '',
         departureDate: "",
-        fromCity: "city2",
-        toCity: "city1",
+        fromCity: "Mombasa",
+        toCity: "Nairobi",
     };
 
-    const date = new Date();
-    date.setDate(date.getDate() +7)
+   for(let i = 0; i <7; i++){
+    const date = new Date()
+    date.setDate(date.getDate() +i)
     const trainDate = date.toLocaleDateString().split('T')[0]
     trainCity1.train_name = `${trainDate}-${trainCity1.toCity}-Express`;
     trainCity2.train_name = `${trainDate}-${trainCity2.toCity}-Express`;
     trainCity1.departureDate = date
     trainCity2.departureDate = date
-    console.log(trainCity1.departureDate)
+    console.log(trainCity1.departureDate);
 
     const sqlInsert = `INSERT INTO trainstable (train_name, fromCity, toCity, departureDate) VALUES ?`;
 
@@ -39,6 +40,7 @@ function trainScheduler(){
             console.log("Trains inserted successfully");
         }
     });
+   }
 }
 
 module.exports = trainScheduler

@@ -3,18 +3,18 @@ import { FaDollarSign, FaBus, FaCheck, FaComments } from 'react-icons/fa';
 
 const Featured = () => {
   return (
-    <div className="feature-section">
+    <div id="us" className="feature-section">
       <h2>Why travel with us</h2>
       <div className="feature-cards">
         <div className="feature-card">
           <FaDollarSign className="icon" />
           <h3>LOWEST PRICES</h3>
-          <p>We find the cheapest bus & train tickets, so you can wander for less.</p>
+          <p>We find the cheapest train tickets, so you can wander for less.</p>
         </div>
         <div className="feature-card">
           <FaBus className="icon" />
           <h3>BEST TRAVEL OPTIONS</h3>
-          <p>We partner with 500+ carriers to bring you the most bus & train options.</p>
+          <p>We partner with 500+ carriers to bring you the most train options.</p>
         </div>
         <div className="feature-card">
           <FaCheck className="icon" />

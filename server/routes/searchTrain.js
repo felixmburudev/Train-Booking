@@ -12,10 +12,10 @@ router.get("/search", (req, res) =>{
     db.query((sqlSearch), [fromCity, toCity, departureDate] ,(error, results)=>{
         if(error){
             console.log("ERROR ENCOUNTERED WHILE SEARCHING TRAIN " + error)
-            res.status(500).json({ status: 'error', message: 'Internal Server Error' });}
+            res.status(500).json({ status: 'error', error: 'No Train Found' });}
         else if(results.length <= 0){
             console.log("No train Found");
-            return  res.status(400).json({ status: " No Train Found" });
+            return  res.status(400).json({ error: " No Train Found" });
         }
         else {//results.length > 0
             console.log("Train Found With Success");

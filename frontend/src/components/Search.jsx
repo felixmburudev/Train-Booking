@@ -10,20 +10,21 @@ import axios from "axios";
 
 
 const options = [
-    { value: 'city1', label: 'City 1' },
-    { value: 'city2', label: 'City 2' },
-    { value: 'city3', label: 'City 3' },
+    { value: 'Nairobi', label: 'Nairobi' },
+    { value: 'Mombasa', label: 'Mombasa' },
+    
   ];
 
 
 const Search = () => {
 
-    
+  const [message, setMessage] =useState(null)
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [date, setDate] = useState('');
     const navigate =useNavigate();
     const maxDate = new Date();
+    const minDate = new Date().toISOString().split('T')[0];
     maxDate.setDate(maxDate.getDate() + 7);
     const maxDateFinal = maxDate.toISOString().split('T') [0];
     
@@ -49,7 +50,7 @@ const Search = () => {
         try {
             const response =  await axios.get(`http://localhost:3000/search?from=${from}&to=${to}&date=${date}`);
             if(response.data.remaining_first_class + response.data.remaining_second_class === response.data.train_capacity){
-                alert("Fully BOOKED")
+                setMessage("Fully BOOKED")
             }
             else{
                 const trainData = JSON.stringify(response.data);
@@ -59,7 +60,7 @@ const Search = () => {
             // console.log(response)
             // alert(JSON.stringify(response))
         }catch (err){
-            alert("res errpr")
+          setMessage(err.response.data.error);
             console.log("error while train searching ",err)
         }
 
@@ -67,6 +68,9 @@ const Search = () => {
   return (
     <div>
         <div className="booking-bar">
+          <div className="messageS">
+            <p>{message}</p>
+          </div>
       <form onSubmit={handleSearchClick}>
         <div className="forms">
           
@@ -113,6 +117,7 @@ const Search = () => {
             onChange={(e) => setDate(e.target.value)}
             className="date-picker"
             max={maxDateFinal}
+            min={minDate}
           />
         </div>
         </div>

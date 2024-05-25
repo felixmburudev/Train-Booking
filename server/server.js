@@ -10,6 +10,7 @@ const getTrainSeats =require('./routes/getTrainSeats')
 const trainScheduler = require('./controller/trainScheduler')
 const delete_old_trains = require('./controller/deleteTrains')
 // const liveTrain = require('./controller/liveTrain')
+const ticketsCancle = require('./routes/ticketCancle') 
 
 const app = express()
 app.use(cors());
@@ -27,6 +28,7 @@ app.get("/search", searchTrainRoute)
 app.get('/nextTrain', nextTrainRoute);
 app.post("/book", bookRoute);
 app.get('/getSeats', getTrainSeats)
+app.delete('/ticketCanceling', ticketsCancle)
 
 // // sockwr
 // const server = http.createServer(app)
